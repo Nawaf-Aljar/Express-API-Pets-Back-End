@@ -9,12 +9,16 @@ mongoose.connection.on("connected", () => {
     console.log("Connected to MongoBD")
 })
 
+//controllers
+const petCtrl = require("./controllers/pets")
+
 //middleware
 const morgan = require("morgan")
 app.use(morgan("dev"))
 app.use(express.json())
 
 //Routes
+app.use("/pets",petCtrl)
 
 app.listen(3000, () => {
     console.log("Express is ready")
